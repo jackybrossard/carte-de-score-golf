@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Score Golf">
+<meta name="theme-color" content="#064e3b">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAEG0lEQVR4nMWWz28VVRTHP+femXnz5tHXQoGgUNCNNcbExMQIGhNQF65YuEA2/ljJQmTl0vgXmBg3LozRRPyxZCW6kLgxbIgJJY2oBSUpNlCFUtr3Y37ce1xMaV/Le/Txngk3ubmTycw53/M953zvkfDw88oDXOZBOh8egKzsIVYwuAFB1SMCYgyqg2UyGDgEVaIwIneC+ozACs7D/cIwqzTexw6sJV++zYnDR/nwjSPky4u00pBMwRowpn9bg9WAADgIRjjxgnL2reu880yDhxJPu2VIM0GkBLPZGjAFAhgK59DCcWB3zoHHbvHBAeXUTJUvpxPOXo3ACUHs7+lhsCJcoU+kjLSZCUYM2+OCY083OPZUgwv/hnw2VeOL6YTU9zb1v+iAAiJgjAJKIxeuLRtutoXNmiMY2KusnbWKQsUz80/At78lfHOxyu/zYemgsmkKBsiByOrOnfDDpZiTl8b5/s+Q5aaBUImrZehO721/cAY8jFU8n/4ywvGvd8JogrU51cTjFVyfgjBkEcJiajChklQ9WQGFdnzTF4BhEACBCB7BqaAD2Bq6C4a9y4dKwbrnAW/GBz4PDFkD3Wi4XwD9/iMbnrv57+Sz7zbcZBkp5dQ7D6ogglKe/o7OiqBeUaer34hIX4T0VEIBRCHNMggtST1BIotEAVG1QvuGZ2zHWOlozxjJ+HayVorPCny7wKc5PnclGNMbSU8GnPO4UJl8fBKJQy7fuk6tEiPWkE7PIr9e4avG56Uin79M+oQjenICXHn1+dzjmin5YgvXzHqCkPDIofXZUhArmG1VPn79OG8++zKucHzy83e8f/oktUpMvtjALzRoLi4BkIyOYLbWsPVkNQWlUhpQJb/dIp1fAu/ZyPhdRWitId0W8dpzB3l7/yvlyzDgvUOvcmZmijMzU9TH6/jxOrHZXUbrPXiPug4HCuo9CIRjCRJa2n8v3MWA6RR2dRDWEzS2PFLfAcBfV2fPXr02dw5g39admrsCcR7Nclw7xbVTNMvRosvUcQdL4QlqFYJ6FXWsgCz3BiFS1ApJFHP64jkaWZtH90zs27Pr4YkbzSV+/OO81KIqbpXmzt01xeujDSwb+1PCoy+uvVHFVEK27B1nKW2xf+8k7x48TO4cH/10igtzV6hFMV7vMWNtXMqqPrRmF/Bpvq4OJDz60jpI6j3BSEyya4xmkdJOUwWIw0iSqLLW+/04FhBTakQ6v0R+u4WY9aTfVYRiDcVySmP2BvH4CFu2jAq2NOK829zxyqBa1pSnWE7JbjZwaYF0mdO76oBYwWcFjbkFbCXAJhG2GmFCWxoxALJW8LoSsgctHC53uFaGa2alYyltdpPn7kKka5H4rMC1c5AmJjCINcjK2YlAnUeLshV9Ucq2mA4V7JG5/wC557k2d85lZgAAAABJRU5ErkJggg==">
+<title>Carte de score - Golf</title>
+<style>
+  :root {
+    --emerald-900:#064e3b; --emerald-800:#065f46; --emerald-700:#047857; --emerald-50:#ecfdf5;
+    --amber-400:#fbbf24; --amber-100:#fef3c7; --amber-800:#92400e; --amber-900:#78350f;
+    --rose-100:#ffe4e6; --rose-200:#fecdd3; --rose-700:#be123c; --rose-900:#881337; --rose-600:#e11d48;
+    --stone-50:#fafaf9; --stone-100:#f5f5f4; --stone-200:#e7e5e4; --stone-300:#d6d3d1;
+    --stone-400:#a8a29e; --stone-500:#78716c; --stone-600:#57534e; --stone-700:#44403c;
+    --stone-800:#292524; --stone-900:#1c1917;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--stone-100);
+    color: var(--stone-800);
+  }
+  .wrap { max-width: 480px; margin: 0 auto; padding: 24px 16px 48px; min-height: 100vh; }
+  .row { display: flex; align-items: center; }
+  .between { justify-content: space-between; }
+  .gap2 { gap: 8px; }
+  .gap3 { gap: 12px; }
+  h1 { font-size: 22px; font-weight: 800; color: var(--emerald-900); margin: 0; letter-spacing: -0.01em; }
+  h2 { font-size: 14px; font-weight: 700; color: var(--stone-700); margin: 0 0 12px; }
+  p.sub { color: var(--stone-500); font-size: 13px; margin: 4px 0 24px; }
+  .card { background: #fff; border: 1px solid var(--stone-200); border-radius: 16px; padding: 16px; margin-bottom: 16px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); }
+  input[type=text] {
+    flex: 1; border: 1px solid var(--stone-300); border-radius: 10px; padding: 10px 12px;
+    font-size: 15px; color: var(--stone-800); background: #fff;
+  }
+  input[type=text]:focus { outline: none; border-color: var(--emerald-700); box-shadow: 0 0 0 2px rgba(4,120,87,0.15); }
+  .player-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .icon-btn {
+    width: 36px; height: 36px; flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+    border-radius: 10px; background: var(--stone-100); border: none; color: var(--stone-500); font-size: 16px; cursor: pointer;
+  }
+  .icon-btn:active { background: var(--rose-100); color: var(--rose-600); }
+  .link-btn { background: none; border: none; color: var(--emerald-700); font-size: 14px; font-weight: 600; padding: 8px 0; cursor: pointer; }
+  .holes-toggle { display: flex; gap: 8px; }
+  .toggle-btn {
+    flex: 1; padding: 10px; border-radius: 10px; font-weight: 700; font-size: 14px; cursor: pointer;
+    border: 1px solid var(--stone-300); background: #fff; color: var(--stone-600);
+  }
+  .toggle-btn.active { background: var(--emerald-800); border-color: var(--emerald-800); color: #fff; }
+  .par-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+  .par-cell { background: var(--stone-50); border: 1px solid var(--stone-200); border-radius: 10px; padding: 8px 4px; display: flex; flex-direction: column; align-items: center; }
+  .par-cell .lbl { font-size: 10px; color: var(--stone-400); margin-bottom: 2px; }
+  .par-cell .val { font-size: 17px; font-weight: 800; color: var(--stone-800); }
+  .mini-btn { width: 22px; height: 22px; border-radius: 6px; background: var(--stone-200); border: none; color: var(--stone-600); font-size: 12px; cursor: pointer; }
+  .par-btns { display: flex; gap: 4px; margin-top: 4px; }
+  .btn-primary {
+    width: 100%; background: var(--emerald-800); color: #fff; font-weight: 700; font-size: 15px;
+    padding: 14px; border: none; border-radius: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .btn-primary:active { background: var(--emerald-900); }
+  .btn-primary:disabled { opacity: 0.4; }
+  .btn-outline {
+    width: 100%; background: #fff; color: var(--emerald-800); font-weight: 700; font-size: 15px;
+    padding: 14px; border: 1px solid var(--emerald-700); border-radius: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 8px;
+  }
+  .empty-state { background: #fff; border: 1px solid var(--stone-200); border-radius: 14px; padding: 24px; text-align: center; color: var(--stone-500); font-size: 13px; }
+  .saved-notice { color: var(--emerald-700); font-size: 12px; margin: 4px 0 16px; }
+
+  .tabbar { display: flex; gap: 8px; margin-bottom: 18px; }
+  .tab-btn { flex: 1; padding: 10px; border-radius: 10px; font-weight: 700; font-size: 13px; border: 1px solid var(--stone-300); background: #fff; color: var(--stone-500); cursor: pointer; }
+  .tab-btn.active { background: var(--emerald-800); border-color: var(--emerald-800); color: #fff; }
+  .tab-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  .course-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+  .course-chip { display: flex; align-items: center; gap: 6px; padding: 8px 10px; border-radius: 10px; border: 1px solid var(--stone-300); background: #fff; font-size: 13px; font-weight: 600; color: var(--stone-700); cursor: pointer; }
+  .course-chip.selected { background: var(--emerald-50); border-color: var(--emerald-700); color: var(--emerald-800); }
+  .course-chip .chip-del { color: var(--stone-400); font-size: 12px; padding: 2px; }
+  .course-chip.selected .chip-del { color: var(--emerald-700); }
+  .course-chip.new-chip { border-style: dashed; color: var(--emerald-700); }
+
+  .half-label { font-size: 12px; font-weight: 800; color: var(--emerald-800); text-transform: uppercase; letter-spacing: .03em; margin: 14px 0 6px; }
+  .half-total-row { display: flex; justify-content: space-between; font-size: 13px; color: var(--stone-600); margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--stone-200); }
+  .grand-total-row { display: flex; justify-content: space-between; font-size: 14px; font-weight: 800; color: var(--emerald-900); margin-top: 10px; padding-top: 10px; border-top: 2px solid var(--stone-200); }
+
+  .locked-banner { background: var(--amber-100); color: var(--amber-800); border: 1px solid #fcd34d; border-radius: 10px; padding: 10px 12px; font-size: 13px; margin-bottom: 16px; }
+  .readonly-row { display: flex; justify-content: space-between; font-size: 14px; padding: 6px 0; border-bottom: 1px solid var(--stone-100); }
+
+  .chrono-panel { background: #fff; border: 1px solid var(--stone-200); border-radius: 16px; padding: 18px; text-align: center; margin-top: 4px; }
+  .chrono-big { font-family: "SF Mono", Menlo, monospace; font-size: 34px; font-weight: 800; color: var(--emerald-900); letter-spacing: 0.03em; }
+  .chrono-label { font-size: 12px; color: var(--stone-400); margin-bottom: 6px; }
+
+  .header-bar { background: var(--emerald-900); color: #fff; border-radius: 16px; padding: 16px; margin-bottom: 16px; }
+  .hole-nav-btn { width: 32px; height: 32px; border-radius: 8px; background: var(--emerald-800); border: none; color: #fff; font-size: 16px; cursor: pointer; }
+  .hole-nav-btn:disabled { opacity: 0.3; }
+  .hb-label { font-size: 11px; color: #a7f3d0; line-height: 1; margin-bottom: 3px; }
+  .hb-value { font-size: 22px; font-weight: 800; line-height: 1; }
+  .timer-row { display: flex; gap: 8px; margin-top: 10px; }
+  .timer-box { flex: 1; background: rgba(6,95,70,0.5); border-radius: 10px; padding: 8px 10px; text-align: center; }
+  .timer-box .tb-label { font-size: 10px; color: #a7f3d0; margin-bottom: 2px; }
+  .timer-box .tb-value { font-family: "SF Mono", Menlo, monospace; font-size: 18px; font-weight: 700; letter-spacing: 0.02em; }
+
+  .player-score-card { background: #fff; border: 1px solid var(--stone-200); border-radius: 14px; padding: 12px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .player-score-card .name { font-weight: 700; color: var(--stone-800); font-size: 15px; }
+  .badge { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 999px; border: 1px solid; margin-top: 4px; }
+  .badge.badge-eagle { border-color: #fcd34d; }
+  .badge.badge-birdie { border-color: #6ee7b7; }
+  .badge.badge-par { border-color: var(--stone-300); }
+  .badge.badge-bogey { border-color: var(--rose-200); }
+  .badge.badge-double { border-color: #fda4af; }
+  .stepper { display: flex; align-items: center; gap: 12px; }
+  .step-btn { width: 36px; height: 36px; border-radius: 10px; border: none; font-size: 16px; cursor: pointer; }
+  .step-minus { background: var(--stone-100); color: var(--stone-600); }
+  .step-plus { background: var(--emerald-700); color: #fff; }
+  .score-val { font-size: 22px; font-weight: 800; width: 28px; text-align: center; }
+  .hole-time { font-size: 9px; color: var(--stone-400); margin-top: 2px; }
+
+  .table-scroll { overflow-x: auto; }
+  table.score-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  table.score-table th { font-weight: 700; color: var(--stone-500); padding: 6px 4px; text-align: center; white-space: nowrap; }
+  table.score-table th.name-col { text-align: left; }
+  table.score-table td { padding: 5px 3px; text-align: center; }
+  table.score-table td.hole-col { color: var(--stone-400); font-weight: 600; }
+  .section-row td { background: var(--stone-100); font-weight: 800; font-size: 10px; color: var(--emerald-800); text-transform: uppercase; letter-spacing: .04em; padding: 7px 3px; text-align: left; }
+  .subtotal-row td { background: var(--stone-50); font-weight: 700; }
+  .grandtotal-row td { background: var(--emerald-900); color: #fff; font-weight: 800; }
+  .score-chip { display: inline-block; min-width: 22px; padding: 2px 4px; border-radius: 6px; font-weight: 700; }
+  .score-cell { cursor: pointer; }
+  .badge-eagle { background: var(--amber-100); color: var(--amber-800); }
+  .badge-birdie { background: var(--emerald-50); color: var(--emerald-700); }
+  .badge-par { background: var(--stone-100); color: var(--stone-600); }
+  .badge-bogey { background: var(--rose-100); color: var(--rose-700); }
+  .badge-double { background: var(--rose-200); color: var(--rose-900); }
+  .diff-chip { font-size: 10px; opacity: 0.85; }
+
+  .total-time-row { display: flex; align-items: center; justify-content: space-between; background: #fff; border: 1px solid var(--stone-200); border-radius: 14px; padding: 14px; margin-bottom: 24px; }
+  .rank-num { width: 20px; height: 20px; border-radius: 999px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; background: var(--stone-100); color: var(--stone-500); }
+  .rank-num.first { background: var(--amber-400); color: var(--amber-900); }
+  .rank-name { font-weight: 600; color: var(--stone-800); margin-left: 8px; }
+  .rank-score { color: var(--stone-600); font-weight: 600; }
+
+  .history-item { background: #fff; border: 1px solid var(--stone-200); border-radius: 12px; padding: 12px; margin-bottom: 8px; }
+  .history-item .hist-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .history-item .date { font-size: 11px; color: var(--stone-400); }
+  .history-item .course-name { font-size: 13px; font-weight: 700; color: var(--stone-800); }
+  .history-item .hist-players { border-top: 1px solid var(--stone-100); padding-top: 8px; }
+  .hist-player-row { display: flex; align-items: center; justify-content: space-between; font-size: 13px; padding: 2px 0; }
+  .hist-player-row .hp-name { font-weight: 600; color: var(--stone-800); }
+  .hist-player-row .hp-score { color: var(--stone-600); }
+  .hist-player-row .hp-diff { color: var(--stone-400); }
+</style>
+</head>
+<body>
+<div id="app" class="wrap"></div>
+
+<script>
+(function () {
+  "use strict";
+
+  var COURSES_KEY = "golfScorecardCourses";
+  var HISTORY_KEY = "golfScorecardHistory";
+  var DEFAULT_PAR = 4, MIN_PAR = 3, MAX_PAR = 5, MAX_PLAYERS = 6, HALF = 9;
+  var timerInterval = null;
+
+  function sum(a, b) { return a + b; }
+  function sumRange(arr, start, end) {
+    var total = 0;
+    for (var i = start; i < end; i++) total += (arr[i] || 0);
+    return total;
+  }
+  function formatTime(totalSeconds) {
+    var m = Math.floor(totalSeconds / 60), s = totalSeconds % 60;
+    return String(m).padStart(2, "0") + ":" + String(s).padStart(2, "0");
+  }
+  function escapeHtml(str) {
+    return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  }
+  function badgeClass(diff) {
+    if (diff <= -2) return "badge-eagle";
+    if (diff === -1) return "badge-birdie";
+    if (diff === 0) return "badge-par";
+    if (diff === 1) return "badge-bogey";
+    return "badge-double";
+  }
+  function diffLabel(diff) { return diff > 0 ? "+" + diff : String(diff); }
+  function formatDate(iso) {
+    try {
+      var d = new Date(iso);
+      return d.toLocaleDateString("fr-FR", { day: "2-digit", month: "2-digit", year: "numeric" }) +
+        " " + d.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
+    } catch (e) { return iso; }
+  }
+
+  // ---------- persistence ----------
+  function loadCourses() {
+    try { return JSON.parse(localStorage.getItem(COURSES_KEY) || "[]"); }
+    catch (e) { return []; }
+  }
+  function persistCourses(list) {
+    try { localStorage.setItem(COURSES_KEY, JSON.stringify(list)); }
+    catch (e) { console.error("Erreur de sauvegarde des parcours :", e); }
+  }
+  function loadHistoryList() {
+    try {
+      var list = JSON.parse(localStorage.getItem(HISTORY_KEY) || "[]");
+      list.sort(function (a, b) { return new Date(b.date) - new Date(a.date); });
+      return list;
+    } catch (e) { return []; }
+  }
+
+  function defaultState() {
+    return {
+      screen: "config",
+      courses: loadCourses(),
+      selectedCourseId: null,
+      courseName: "",
+      numHoles: 18,
+      pars: Array(18).fill(DEFAULT_PAR),
+      players: ["", ""],
+      scores: [],
+      roundInitialized: false,
+      finishedRound: false,
+      running: false,
+      currentHole: 0,
+      holeStart: null,
+      holeTimes: [],
+      elapsed: 0,
+      playSubview: "hole",
+      copied: false,
+      savedNotice: false,
+      courseSavedNotice: false,
+      history: []
+    };
+  }
+  var state = defaultState();
+
+  // ---------- course management ----------
+  function selectCourse(id) {
+    var c = state.courses.find(function (x) { return x.id === id; });
+    if (!c) return;
+    state.selectedCourseId = c.id;
+    state.courseName = c.name;
+    state.numHoles = c.numHoles;
+    state.pars = c.pars.slice();
+    state.courseSavedNotice = false;
+    render();
+  }
+  function newCourseDraft() {
+    state.selectedCourseId = null;
+    state.courseName = "";
+    state.numHoles = 18;
+    state.pars = Array(18).fill(DEFAULT_PAR);
+    state.courseSavedNotice = false;
+    render();
+  }
+  function persistCurrentCourse() {
+    var name = state.courseName.trim() || "Parcours sans nom";
+    state.courseName = name;
+    var course = {
+      id: state.selectedCourseId || ("course_" + Date.now()),
+      name: name,
+      numHoles: state.numHoles,
+      pars: state.pars.slice()
+    };
+    var idx = state.courses.findIndex(function (c) { return c.id === course.id; });
+    if (idx >= 0) state.courses[idx] = course; else state.courses.push(course);
+    persistCourses(state.courses);
+    state.selectedCourseId = course.id;
+  }
+  function saveCurrentCourse() {
+    persistCurrentCourse();
+    state.courseSavedNotice = true;
+    render();
+    setTimeout(function () { state.courseSavedNotice = false; render(); }, 2200);
+  }
+  function deleteCourse(id) {
+    state.courses = state.courses.filter(function (c) { return c.id !== id; });
+    persistCourses(state.courses);
+    if (state.selectedCourseId === id) newCourseDraft(); else render();
+  }
+  function setHoleCount(n) {
+    state.numHoles = n;
+    var next = Array(n).fill(DEFAULT_PAR);
+    for (var i = 0; i < Math.min(n, state.pars.length); i++) next[i] = state.pars[i];
+    state.pars = next;
+    render();
+  }
+  function updatePar(i, delta) {
+    state.pars[i] = Math.min(MAX_PAR, Math.max(MIN_PAR, state.pars[i] + delta));
+    render();
+  }
+
+  // ---------- players ----------
+  function addPlayer() { if (state.players.length < MAX_PLAYERS) { state.players.push(""); render(); } }
+  function removePlayer(i) { if (state.players.length > 1) { state.players.splice(i, 1); render(); } }
+
+  // ---------- round flow ----------
+  function goToPlayScreen() {
+    persistCurrentCourse();
+    state.players = state.players.map(function (p, i) { return p.trim() || ("Joueur " + (i + 1)); });
+    state.scores = state.players.map(function () { return state.pars.slice(); });
+    state.running = false;
+    state.currentHole = 0;
+    state.holeStart = null;
+    state.holeTimes = Array(state.numHoles).fill(null);
+    state.elapsed = 0;
+    state.playSubview = "hole";
+    state.roundInitialized = true;
+    state.finishedRound = false;
+    state.screen = "play";
+    render();
+  }
+  function startChrono() {
+    state.running = true;
+    state.currentHole = 0;
+    state.holeStart = Date.now();
+    state.playSubview = "hole";
+    render();
+  }
+  function adjustScore(playerIdx, delta) {
+    state.scores[playerIdx][state.currentHole] = Math.max(1, state.scores[playerIdx][state.currentHole] + delta);
+    render();
+  }
+  function goToHole(idx) {
+    if (idx < 0 || idx >= state.numHoles) return;
+    var elapsedHole = Math.floor((Date.now() - state.holeStart) / 1000);
+    state.holeTimes[state.currentHole] = elapsedHole;
+    state.currentHole = idx;
+    state.holeStart = Date.now();
+    render();
+  }
+  function editScore(playerIdx, holeIdx) {
+    var current = state.scores[playerIdx][holeIdx];
+    var name = state.players[playerIdx];
+    var par = state.pars[holeIdx];
+    var val = window.prompt("Score de " + name + " au trou " + (holeIdx + 1) + " (par " + par + ") :", String(current));
+    if (val === null) return;
+    var num = parseInt(val, 10);
+    if (!isNaN(num) && num >= 1 && num <= 15) {
+      state.scores[playerIdx][holeIdx] = num;
+      render();
+    } else {
+      window.alert("Merci d'entrer un score valide (entre 1 et 15).");
+    }
+  }
+  function totalsThroughCurrentHole() {
+    return state.players.map(function (name, pIdx) {
+      var strokes = 0, par = 0;
+      for (var h = 0; h <= state.currentHole; h++) { strokes += state.scores[pIdx][h]; par += state.pars[h]; }
+      return { name: name, strokes: strokes, diff: strokes - par };
+    });
+  }
+  function computeBreakdown() {
+    return computeBreakdownFrom(state.pars, state.scores, state.players, state.numHoles);
+  }
+  function rankedPlayers(players) {
+    return players.slice().sort(function (a, b) { return a.totalScore - b.totalScore; });
+  }
+  function cumulativeSeconds() {
+    var finalized = state.holeTimes.reduce(function (a, b) { return a + (b || 0); }, 0);
+    var live = state.running && state.holeStart ? Math.floor((Date.now() - state.holeStart) / 1000) : 0;
+    return finalized + live;
+  }
+  function finishRound() {
+    var elapsedHole = state.holeStart ? Math.floor((Date.now() - state.holeStart) / 1000) : 0;
+    state.holeTimes[state.currentHole] = elapsedHole;
+    state.running = false;
+    var totalTime = state.holeTimes.reduce(function (a, b) { return a + (b || 0); }, 0);
+    state.elapsed = totalTime;
+    var b = computeBreakdown();
+    saveRoundToHistory(b, totalTime);
+    state.finishedRound = true;
+    state.screen = "summary";
+    render();
+  }
+  function newGame() {
+    state.scores = [];
+    state.roundInitialized = false;
+    state.finishedRound = false;
+    state.running = false;
+    state.currentHole = 0;
+    state.holeStart = null;
+    state.holeTimes = [];
+    state.elapsed = 0;
+    state.playSubview = "hole";
+    state.copied = false;
+    state.savedNotice = false;
+    state.screen = "config";
+    render();
+  }
+
+  // ---------- history ----------
+  function saveRoundToHistory(breakdown, totalTime) {
+    try {
+      var round = {
+        id: "round_" + Date.now(),
+        date: new Date().toISOString(),
+        courseName: state.courseName || "Parcours sans nom",
+        numHoles: state.numHoles,
+        pars: state.pars.slice(),
+        players: state.players.slice(),
+        scores: state.scores.map(function (r) { return r.slice(); }),
+        holeTimes: state.holeTimes.slice(),
+        totalTime: totalTime,
+        parTotals: { aller: breakdown.allerParTotal, retour: breakdown.retourParTotal, total: breakdown.grandParTotal },
+        playerTotals: breakdown.players
+      };
+      var existing = loadHistoryList();
+      existing.push(round);
+      localStorage.setItem(HISTORY_KEY, JSON.stringify(existing));
+      state.savedNotice = true;
+    } catch (e) {
+      console.error("Erreur de sauvegarde de la partie :", e);
+      state.savedNotice = false;
+    }
+  }
+  function openHistory() {
+    state.history = loadHistoryList();
+    state.screen = "history";
+    render();
+  }
+  function deleteHistoryItem(id) {
+    try {
+      var existing = loadHistoryList().filter(function (r) { return r.id !== id; });
+      localStorage.setItem(HISTORY_KEY, JSON.stringify(existing));
+      state.history = existing;
+      render();
+    } catch (e) { console.error("Erreur de suppression :", e); }
+  }
+
+  function computeBreakdownFrom(pars, scores, players, numHoles) {
+    var hasRetour = numHoles > HALF;
+    var allerPars = pars.slice(0, Math.min(HALF, numHoles));
+    var retourPars = hasRetour ? pars.slice(HALF) : [];
+    var allerParTotal = allerPars.reduce(sum, 0);
+    var retourParTotal = retourPars.reduce(sum, 0);
+    var grandParTotal = allerParTotal + retourParTotal;
+    var playersOut = players.map(function (name, pIdx) {
+      var arr = scores[pIdx] || [];
+      var allerArr = arr.slice(0, Math.min(HALF, numHoles));
+      var retourArr = hasRetour ? arr.slice(HALF) : [];
+      var allerScore = allerArr.reduce(sum, 0);
+      var retourScore = retourArr.reduce(sum, 0);
+      var totalScore = allerScore + retourScore;
+      return {
+        name: name,
+        allerScore: allerScore, retourScore: retourScore, totalScore: totalScore,
+        allerDiff: allerScore - allerParTotal,
+        retourDiff: hasRetour ? (retourScore - retourParTotal) : null,
+        totalDiff: totalScore - grandParTotal
+      };
+    });
+    return { hasRetour: hasRetour, allerParTotal: allerParTotal, retourParTotal: retourParTotal, grandParTotal: grandParTotal, players: playersOut };
+  }
+
+  // ---------- share ----------
+  function buildRecapText(courseName, numHoles, pars, scores, players, holeTimesArr, totalTime, dateStr) {
+    var b = computeBreakdownFrom(pars, scores, players, numHoles);
+    holeTimesArr = holeTimesArr || [];
+    var allerTime = sumRange(holeTimesArr, 0, Math.min(HALF, numHoles));
+    var retourTime = b.hasRetour ? sumRange(holeTimesArr, HALF, numHoles) : 0;
+    var ranked = b.players.slice().sort(function (a, b2) { return a.totalScore - b2.totalScore; });
+    var lines = ["\u26F3 " + (courseName || "R\u00e9sultats") + " \u2014 " + numHoles + " trous" + (dateStr ? " (" + dateStr + ")" : "")];
+    lines.push("");
+    lines.push("Classement :");
+    ranked.forEach(function (r, i) {
+      lines.push((i + 1) + ". " + r.name + " : " + r.totalScore + " (" + diffLabel(r.totalDiff) + ")" +
+        (b.hasRetour ? "  [Aller " + r.allerScore + " (" + diffLabel(r.allerDiff) + ") \u00b7 Retour " + r.retourScore + " (" + diffLabel(r.retourDiff) + ")]" : ""));
+    });
+    lines.push("");
+    lines.push("D\u00e9tail par trou :");
+    function holeLine(h) {
+      var par = pars[h];
+      var parts = players.map(function (name, pIdx) {
+        var val = (scores[pIdx] || [])[h];
+        return name + " " + val + " (" + diffLabel(val - par) + ")";
+      });
+      return "Trou " + (h + 1) + " (par " + par + ") \u2014 " + parts.join(", ");
+    }
+    lines.push("Aller (1-9) :");
+    for (var h = 0; h < Math.min(HALF, numHoles); h++) lines.push(holeLine(h));
+    lines.push("Total aller : " + b.allerParTotal + " (par) \u00b7 " + formatTime(allerTime));
+    if (b.hasRetour) {
+      lines.push("");
+      lines.push("Retour (10-18) :");
+      for (var h2 = HALF; h2 < numHoles; h2++) lines.push(holeLine(h2));
+      lines.push("Total retour : " + b.retourParTotal + " (par) \u00b7 " + formatTime(retourTime));
+    }
+    lines.push("");
+    lines.push("Temps total : " + formatTime(totalTime));
+    return lines.join("\n");
+  }
+  function shareText(text) {
+    if (navigator.share) {
+      navigator.share({ title: "R\u00e9sultats de golf", text: text }).catch(function () {});
+    } else if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () {
+        state.copied = true; render();
+        setTimeout(function () { state.copied = false; render(); }, 2500);
+      }).catch(function () { window.prompt("Copie manuelle (Cmd/Ctrl+C) :", text); });
+    } else {
+      window.prompt("Copie manuelle (Cmd/Ctrl+C) :", text);
+    }
+  }
+  function shareResults() {
+    var text = buildRecapText(state.courseName, state.numHoles, state.pars, state.scores, state.players, state.holeTimes, state.elapsed, null);
+    shareText(text);
+  }
+  function shareHistoryItem(id) {
+    var item = state.history.find(function (r) { return r.id === id; });
+    if (!item) return;
+    var text = buildRecapText(item.courseName, item.numHoles, item.pars, item.scores, item.players, item.holeTimes || [], item.totalTime, formatDate(item.date));
+    shareText(text);
+  }
+
+  // ---------- timer ----------
+  function startTimerTick() {
+    updateTimerDisplay();
+    timerInterval = setInterval(updateTimerDisplay, 1000);
+  }
+  function updateTimerDisplay() {
+    if (!state.running || !state.holeStart) return;
+    var holeElapsed = Math.floor((Date.now() - state.holeStart) / 1000);
+    var cumul = state.holeTimes.reduce(function (a, b) { return a + (b || 0); }, 0) + holeElapsed;
+    var elHole = document.getElementById("holeTimerDisplay");
+    if (elHole) elHole.textContent = formatTime(holeElapsed);
+    var elCumul = document.getElementById("cumulTimerDisplay");
+    if (elCumul) elCumul.textContent = formatTime(cumul);
+    var elCumul2 = document.getElementById("cumulTimerDisplay2");
+    if (elCumul2) elCumul2.textContent = formatTime(cumul);
+  }
+
+  // ---------- render ----------
+  function render() {
+    var app = document.getElementById("app");
+    clearInterval(timerInterval);
+    if (state.screen === "config") app.innerHTML = renderConfig();
+    else if (state.screen === "play") { app.innerHTML = renderPlay(); if (state.running) startTimerTick(); }
+    else if (state.screen === "history") app.innerHTML = renderHistory();
+    else app.innerHTML = renderSummary();
+  }
+
+  function renderTabs(active) {
+    return '<div class="tabbar">' +
+      '<button class="tab-btn ' + (active === "config" ? "active" : "") + '" data-action="go-config">Configuration partie</button>' +
+      '<button class="tab-btn ' + (active === "play" ? "active" : "") + '" data-action="go-play" ' + (!state.roundInitialized ? "disabled" : "") + '>Partie</button>' +
+      '</div>';
+  }
+
+  function renderConfig() {
+    if (state.roundInitialized) {
+      return renderTabs("config") +
+        '<div class="row between" style="margin-bottom:1px;"><div class="row gap2"><span style="font-size:24px;">\u26F3</span><h1>Configuration partie</h1></div>' +
+        '<button class="icon-btn" data-action="open-history" aria-label="Historique">\u{1F551}</button></div>' +
+        '<p class="sub">Param\u00e8tres verrouill\u00e9s pendant la partie en cours</p>' +
+        '<div class="locked-banner">\u{1F512} Une partie est en cours sur <strong>' + escapeHtml(state.courseName || "ce parcours") + '</strong>. Termine-la ou lance une nouvelle partie pour changer la configuration.</div>' +
+        '<div class="card">' +
+        '<div class="readonly-row"><span>Parcours</span><strong>' + escapeHtml(state.courseName || "\u2014") + '</strong></div>' +
+        '<div class="readonly-row"><span>Trous</span><strong>' + state.numHoles + '</strong></div>' +
+        '<div class="readonly-row" style="border-bottom:none;"><span>Joueurs</span><strong>' + state.players.map(escapeHtml).join(", ") + '</strong></div>' +
+        '</div>' +
+        '<button class="btn-primary" data-action="new-game">\u21BA Nouvelle partie</button>';
+    }
+
+    var coursesHtml = state.courses.map(function (c) {
+      var sel = state.selectedCourseId === c.id;
+      return '<div class="course-chip ' + (sel ? "selected" : "") + '" data-action="select-course" data-id="' + c.id + '">' +
+        '<span>' + escapeHtml(c.name) + ' \u00b7 ' + c.numHoles + 't</span>' +
+        '<span class="chip-del" data-action="delete-course" data-id="' + c.id + '">\u2715</span>' +
+        '</div>';
+    }).join("");
+    coursesHtml += '<div class="course-chip new-chip" data-action="new-course-draft">+ Nouveau</div>';
+
+    var allerCells = state.pars.slice(0, Math.min(HALF, state.numHoles)).map(function (par, i) {
+      return parCellHtml(par, i);
+    }).join("");
+    var allerTotal = state.pars.slice(0, Math.min(HALF, state.numHoles)).reduce(sum, 0);
+    var hasRetour = state.numHoles > HALF;
+    var retourHtml = "";
+    if (hasRetour) {
+      var retourCells = state.pars.slice(HALF).map(function (par, i) {
+        return parCellHtml(par, HALF + i);
+      }).join("");
+      var retourTotal = state.pars.slice(HALF).reduce(sum, 0);
+      retourHtml = '<div class="half-label">Retour (trous 10-18)</div><div class="par-grid">' + retourCells + '</div>' +
+        '<div class="half-total-row"><span>Total retour</span><strong>' + retourTotal + '</strong></div>';
+    }
+    var grandTotal = state.pars.reduce(sum, 0);
+
+    var playersHtml = state.players.map(function (p, i) {
+      return '<div class="player-row">' +
+        '<input type="text" class="player-input" data-player-index="' + i + '" value="' + escapeHtml(p) + '" placeholder="Joueur ' + (i + 1) + '">' +
+        (state.players.length > 1 ? '<button class="icon-btn" data-action="remove-player" data-index="' + i + '" aria-label="Retirer">\u2715</button>' : '') +
+        '</div>';
+    }).join("");
+
+    return '' +
+      renderTabs("config") +
+      '<div class="row between" style="margin-bottom:1px;">' +
+      '<div class="row gap2"><span style="font-size:24px;">\u26F3</span><h1>Configuration partie</h1></div>' +
+      '<button class="icon-btn" data-action="open-history" aria-label="Historique">\u{1F551}</button>' +
+      '</div>' +
+      '<p class="sub">Choisis ou cr\u00e9e un parcours, puis tes joueurs</p>' +
+      '<div class="card">' +
+      '<h2>Parcours</h2>' +
+      '<div class="course-row">' + coursesHtml + '</div>' +
+      '<input type="text" class="course-name-input" value="' + escapeHtml(state.courseName) + '" placeholder="Nom du parcours" style="width:100%;margin-bottom:12px;border:1px solid var(--stone-300);border-radius:10px;padding:10px 12px;font-size:15px;">' +
+      '<div class="holes-toggle" style="margin-bottom:14px;">' +
+      [9, 18].map(function (n) {
+        return '<button class="toggle-btn ' + (state.numHoles === n ? "active" : "") + '" data-action="set-holes" data-holes="' + n + '">' + n + ' trous</button>';
+      }).join("") +
+      '</div>' +
+      '<div class="half-label" style="margin-top:0;">Aller (trous 1-9)</div>' +
+      '<div class="par-grid">' + allerCells + '</div>' +
+      '<div class="half-total-row"><span>Total aller</span><strong>' + allerTotal + '</strong></div>' +
+      retourHtml +
+      '<div class="grand-total-row"><span>Total parcours</span><span>' + grandTotal + '</span></div>' +
+      '<button class="link-btn" data-action="save-course" style="margin-top:12px;">\u{1F4BE} Enregistrer le parcours</button>' +
+      (state.courseSavedNotice ? '<p class="saved-notice">\u2713 Parcours enregistr\u00e9</p>' : '') +
+      '</div>' +
+      '<div class="card">' +
+      '<h2>\u{1F465} Joueurs</h2>' + playersHtml +
+      (state.players.length < MAX_PLAYERS ? '<button class="link-btn" data-action="add-player">+ Ajouter un joueur</button>' : '') +
+      '</div>' +
+      '<button class="btn-primary" data-action="go-to-play">Continuer vers la partie \u203A</button>';
+  }
+
+  function parCellHtml(par, i) {
+    return '<div class="par-cell">' +
+      '<span class="lbl">Trou ' + (i + 1) + '</span>' +
+      '<span class="val">' + par + '</span>' +
+      '<div class="par-btns">' +
+      '<button class="mini-btn" data-action="update-par" data-index="' + i + '" data-delta="-1">\u2212</button>' +
+      '<button class="mini-btn" data-action="update-par" data-index="' + i + '" data-delta="1">+</button>' +
+      '</div></div>';
+  }
+
+  function scoreTableHtml(editable) {
+    var b = computeBreakdown();
+    var headerCells = '<th class="name-col">Trou</th><th>Par</th>' + state.players.map(function (n) {
+      return "<th>" + escapeHtml(n) + "</th>";
+    }).join("");
+
+    function holeRow(h) {
+      var t = state.holeTimes[h];
+      var cells = state.pars[h] !== undefined ? '<td class="hole-col">' + (h + 1) +
+        (t != null ? '<div class="hole-time">' + formatTime(t) + '</div>' : '') +
+        '</td><td>' + state.pars[h] + '</td>' : '';
+      var scoreCells = state.players.map(function (name, pIdx) {
+        var val = (state.scores[pIdx] || [])[h];
+        var diff = val - state.pars[h];
+        var attrs = editable ? ' data-action="edit-score" data-player="' + pIdx + '" data-hole="' + h + '"' : '';
+        return '<td class="' + (editable ? "score-cell" : "") + '"' + attrs + '><span class="score-chip ' + badgeClass(diff) + '">' + val + '</span></td>';
+      }).join("");
+      return "<tr>" + cells + scoreCells + "</tr>";
+    }
+
+    var allerTime = sumRange(state.holeTimes, 0, Math.min(HALF, state.numHoles));
+    var retourTime = b.hasRetour ? sumRange(state.holeTimes, HALF, state.numHoles) : 0;
+
+    var allerRows = "";
+    for (var h = 0; h < Math.min(HALF, state.numHoles); h++) allerRows += holeRow(h);
+    var allerSubtotal = '<tr class="subtotal-row"><td colspan="2">Total aller<div class="hole-time" style="margin-top:3px;">\u23F1 ' + formatTime(allerTime) + '</div></td>' +
+      b.players.map(function (p) { return "<td>" + p.allerScore + '<div class="diff-chip">(' + diffLabel(p.allerDiff) + ")</div></td>"; }).join("") + "</tr>";
+
+    var retourRows = "", retourSubtotal = "";
+    if (b.hasRetour) {
+      for (var h2 = HALF; h2 < state.numHoles; h2++) retourRows += holeRow(h2);
+      retourSubtotal = '<tr class="subtotal-row"><td colspan="2">Total retour<div class="hole-time" style="margin-top:3px;">\u23F1 ' + formatTime(retourTime) + '</div></td>' +
+        b.players.map(function (p) { return "<td>" + p.retourScore + '<div class="diff-chip">(' + diffLabel(p.retourDiff) + ")</div></td>"; }).join("") + "</tr>";
+    }
+
+    var grandRow = '<tr class="grandtotal-row"><td colspan="2">Total parcours<div class="hole-time" style="margin-top:3px;color:#a7f3d0;">\u23F1 ' + formatTime(allerTime + retourTime) + '</div></td>' +
+      b.players.map(function (p) { return "<td>" + p.totalScore + '<div class="diff-chip">(' + diffLabel(p.totalDiff) + ")</div></td>"; }).join("") + "</tr>";
+
+    return '<div class="table-scroll"><table class="score-table"><thead><tr>' + headerCells + '</tr></thead><tbody>' +
+      '<tr class="section-row"><td colspan="' + (2 + state.players.length) + '">Aller (1-9)</td></tr>' +
+      allerRows + allerSubtotal +
+      (b.hasRetour ? '<tr class="section-row"><td colspan="' + (2 + state.players.length) + '">Retour (10-18)</td></tr>' + retourRows + retourSubtotal : '') +
+      grandRow +
+      '</tbody></table></div>';
+  }
+
+  function renderPlay() {
+    var header = '<h1>Carte de score</h1><p class="sub" style="margin-bottom:16px;">' + escapeHtml(state.courseName || "Parcours sans nom") + '</p>';
+
+    if (!state.running) {
+      return renderTabs("play") + header +
+        '<div class="chrono-panel">' +
+        '<div class="chrono-label">Chrono pr\u00eat</div>' +
+        '<div class="chrono-big">00:00</div>' +
+        '<button class="btn-primary" style="margin-top:14px;" data-action="start-chrono">\u25B6 D\u00e9marrer</button>' +
+        '</div>';
+    }
+
+    var subnav = '<div class="tabbar">' +
+      '<button class="tab-btn ' + (state.playSubview === "hole" ? "active" : "") + '" data-action="show-hole-view">Trou en cours</button>' +
+      '<button class="tab-btn ' + (state.playSubview === "table" ? "active" : "") + '" data-action="show-table-view">Carte de score</button>' +
+      '</div>';
+
+    if (state.playSubview === "table") {
+      return renderTabs("play") + header + subnav + scoreTableHtml(true) +
+        '<div class="total-time-row" style="margin-top:16px;"><span>\u23F1 Temps cumul\u00e9</span><span id="cumulTimerDisplay2" style="font-family:monospace;font-weight:700;">' + formatTime(cumulativeSeconds()) + '</span></div>' +
+        '<button class="link-btn" data-action="show-hole-view">\u2039 Retour au trou en cours</button>' +
+        '<button class="btn-primary" data-action="finish-round">Terminer la partie \u203A</button>';
+    }
+
+    var totals = totalsThroughCurrentHole();
+    var ranked = rankedPlayers(totals.map(function (t) { return { name: t.name, totalScore: t.strokes, totalDiff: t.diff }; }));
+    var isLast = state.currentHole === state.numHoles - 1;
+
+    var playersHtml = state.players.map(function (name, pIdx) {
+      var val = state.scores[pIdx][state.currentHole];
+      var diff = val - state.pars[state.currentHole];
+      return '<div class="player-score-card">' +
+        '<div><div class="name">' + escapeHtml(name) + '</div>' +
+        '<div class="badge ' + badgeClass(diff) + '">' + (diff === 0 ? "par" : diffLabel(diff)) + '</div></div>' +
+        '<div class="stepper">' +
+        '<button class="step-btn step-minus" data-action="adjust-score" data-player="' + pIdx + '" data-delta="-1">\u2212</button>' +
+        '<span class="score-val">' + val + '</span>' +
+        '<button class="step-btn step-plus" data-action="adjust-score" data-player="' + pIdx + '" data-delta="1">+</button>' +
+        '</div></div>';
+    }).join("");
+
+    var rankHtml = ranked.map(function (r, i) {
+      return '<div class="row between" style="margin-bottom:6px;font-size:14px;">' +
+        '<span class="row"><span class="rank-num ' + (i === 0 ? "first" : "") + '">' + (i + 1) + '</span>' +
+        '<span class="rank-name">' + escapeHtml(r.name) + '</span></span>' +
+        '<span class="rank-score">' + r.totalScore + ' coups <span style="color:var(--stone-400);font-weight:400;">(' + diffLabel(r.totalDiff) + ')</span></span></div>';
+    }).join("");
+
+    return renderTabs("play") + header + subnav +
+      '<div class="header-bar">' +
+      '<div class="row between">' +
+      '<div class="row gap2">' +
+      '<button class="hole-nav-btn" data-action="prev-hole" ' + (state.currentHole === 0 ? "disabled" : "") + '>\u2039</button>' +
+      '<div><div class="hb-label">Trou</div><div class="hb-value">' + (state.currentHole + 1) + ' / ' + state.numHoles + '</div></div>' +
+      '</div>' +
+      '<div style="text-align:right;"><div class="hb-label">Par</div><div class="hb-value">' + state.pars[state.currentHole] + '</div></div>' +
+      '</div>' +
+      '<div class="timer-row">' +
+      '<div class="timer-box"><div class="tb-label">Ce trou</div><div class="tb-value" id="holeTimerDisplay">00:00</div></div>' +
+      '<div class="timer-box"><div class="tb-label">Cumul\u00e9</div><div class="tb-value" id="cumulTimerDisplay">' + formatTime(cumulativeSeconds()) + '</div></div>' +
+      '</div>' +
+      '</div>' +
+      playersHtml +
+      '<div class="card" style="margin-top:8px;"><h2>\u{1F3C6} Classement</h2>' + rankHtml + '</div>' +
+      '<button class="link-btn" data-action="show-table-view" style="margin-bottom:12px;">\u{1F4CB} Voir la carte de score compl\u00e8te</button>' +
+      '<button class="btn-primary" data-action="' + (isLast ? "finish-round" : "next-hole") + '">' + (isLast ? "Terminer la partie" : "Trou suivant") + ' \u203A</button>';
+  }
+
+  function renderSummary() {
+    var b = computeBreakdown();
+    var ranked = rankedPlayers(b.players);
+    var isSolo = state.players.length === 1;
+    var table = scoreTableHtml(false);
+
+    var rankHtml = ranked.map(function (r, i) {
+      return '<div class="row between" style="margin-bottom:8px;">' +
+        '<span class="row"><span class="rank-num ' + (i === 0 ? "first" : "") + '">' + (i + 1) + '</span>' +
+        '<span class="rank-name">' + escapeHtml(r.name) + '</span></span>' +
+        '<span class="rank-score">' + r.totalScore + ' coups (' + diffLabel(r.totalDiff) + ')</span></div>';
+    }).join("");
+
+    return '' +
+      '<div class="row gap2"><span style="font-size:24px;">\u{1F3C6}</span><h1>Partie termin\u00e9e</h1></div>' +
+      '<p class="sub" style="margin-bottom:4px;">' + escapeHtml(state.courseName || "") + '</p>' +
+      '<p class="sub" style="margin-bottom:4px;">' +
+      (isSolo ? "Bravo. \u2014 Belle partie d'entra\u00eenement !" :
+        "Bravo \u00e0 tous \u2014 " + escapeHtml(ranked[0].name) + " l'emporte avec " + ranked[0].totalScore + " coups !") +
+      '</p>' +
+      (state.savedNotice ? '<p class="saved-notice">\u2713 Partie enregistr\u00e9e dans l\'historique</p>' : '<div style="margin-bottom:20px;"></div>') +
+      '<div class="card"><h2>Classement final</h2>' + rankHtml + '</div>' +
+      '<div class="card">' + table + '</div>' +
+      '<div class="total-time-row"><span>\u23F1 Temps total de jeu</span><span style="font-family:monospace;font-weight:700;">' + formatTime(state.elapsed) + '</span></div>' +
+      '<button class="btn-outline" data-action="share-results">' + (state.copied ? "\u2713 Copi\u00e9 dans le presse-papiers !" : "\u{1F4E4} Partager les r\u00e9sultats") + '</button>' +
+      '<button class="btn-primary" data-action="new-game">\u21BA Nouvelle partie</button>';
+  }
+
+  function renderHistory() {
+    var itemsHtml;
+    if (state.history.length === 0) {
+      itemsHtml = '<div class="empty-state">Aucune partie enregistr\u00e9e pour l\'instant.</div>';
+    } else {
+      itemsHtml = state.history.map(function (item) {
+        var hasRetour = item.numHoles > HALF;
+        var holeTimesArr = item.holeTimes || [];
+        var allerTime = sumRange(holeTimesArr, 0, Math.min(HALF, item.numHoles));
+        var retourTime = hasRetour ? sumRange(holeTimesArr, HALF, item.numHoles) : 0;
+        var sortedTotals = item.playerTotals.slice().sort(function (a, b) { return a.totalScore - b.totalScore; });
+        var playersHtml = sortedTotals.map(function (t, i) {
+          var detail = hasRetour ?
+            'Aller ' + t.allerScore + ' (' + diffLabel(t.allerDiff) + ') \u00b7 Retour ' + t.retourScore + ' (' + diffLabel(t.retourDiff) + ')' : '';
+          return '<div class="hist-player-row" style="align-items:flex-start;">' +
+            '<span class="hp-name">' + (i + 1) + '. ' + escapeHtml(t.name) + (detail ? '<div style="font-size:11px;color:var(--stone-400);font-weight:400;">' + detail + '</div>' : '') + '</span>' +
+            '<span class="hp-score">' + t.totalScore + ' coups <span class="hp-diff">(' + diffLabel(t.totalDiff) + ')</span></span>' +
+            '</div>';
+        }).join("");
+        var totalTime = item.totalTime != null ? formatTime(item.totalTime) : "\u2013";
+        var timeDetail = hasRetour ? (' (\u26F3 ' + formatTime(allerTime) + ' / ' + formatTime(retourTime) + ')') : '';
+        return '<div class="history-item">' +
+          '<div class="hist-top"><div>' +
+          '<div class="course-name">' + escapeHtml(item.courseName || "Parcours") + '</div>' +
+          '<div class="date">' + formatDate(item.date) + ' \u00b7 ' + item.numHoles + ' trous \u00b7 \u23F1 ' + totalTime + timeDetail + '</div>' +
+          '</div>' +
+          '<div class="row gap2">' +
+          '<button class="icon-btn" data-action="share-history" data-id="' + item.id + '" aria-label="Partager">\u{1F4E4}</button>' +
+          '<button class="icon-btn" data-action="delete-history" data-id="' + item.id + '" aria-label="Supprimer">\u{1F5D1}</button>' +
+          '</div>' +
+          '</div>' +
+          '<div class="hist-players">' + playersHtml + '</div>' +
+          '</div>';
+      }).join("");
+    }
+    return '<div class="row gap2" style="margin-bottom:20px;">' +
+      '<button class="icon-btn" data-action="back-config" aria-label="Retour">\u2039</button>' +
+      '<h1 style="font-size:18px;">Historique des parties</h1></div>' +
+      itemsHtml;
+  }
+
+  // ---------- event delegation ----------
+  var app = document.getElementById("app");
+  app.addEventListener("click", function (e) {
+    var t = e.target.closest("[data-action]");
+    if (!t || t.disabled) return;
+    var action = t.dataset.action;
+    if (action === "select-course") selectCourse(t.dataset.id);
+    else if (action === "delete-course") deleteCourse(t.dataset.id);
+    else if (action === "new-course-draft") newCourseDraft();
+    else if (action === "set-holes") setHoleCount(Number(t.dataset.holes));
+    else if (action === "update-par") updatePar(Number(t.dataset.index), Number(t.dataset.delta));
+    else if (action === "save-course") saveCurrentCourse();
+    else if (action === "add-player") addPlayer();
+    else if (action === "remove-player") removePlayer(Number(t.dataset.index));
+    else if (action === "go-to-play") goToPlayScreen();
+    else if (action === "go-config") { state.screen = "config"; render(); }
+    else if (action === "go-play") { if (state.roundInitialized) { state.screen = state.finishedRound ? "summary" : "play"; render(); } }
+    else if (action === "back-config") { state.screen = "config"; render(); }
+    else if (action === "open-history") openHistory();
+    else if (action === "delete-history") deleteHistoryItem(t.dataset.id);
+    else if (action === "share-history") shareHistoryItem(t.dataset.id);
+    else if (action === "edit-score") editScore(Number(t.dataset.player), Number(t.dataset.hole));
+    else if (action === "adjust-score") adjustScore(Number(t.dataset.player), Number(t.dataset.delta));
+    else if (action === "prev-hole") goToHole(state.currentHole - 1);
+    else if (action === "next-hole") goToHole(state.currentHole + 1);
+    else if (action === "show-hole-view") { state.playSubview = "hole"; render(); }
+    else if (action === "show-table-view") { state.playSubview = "table"; render(); }
+    else if (action === "start-chrono") startChrono();
+    else if (action === "finish-round") finishRound();
+    else if (action === "share-results") shareResults();
+    else if (action === "new-game") newGame();
+  });
+  app.addEventListener("input", function (e) {
+    if (e.target.matches(".player-input")) {
+      state.players[Number(e.target.dataset.playerIndex)] = e.target.value;
+    } else if (e.target.matches(".course-name-input")) {
+      state.courseName = e.target.value;
+    }
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
